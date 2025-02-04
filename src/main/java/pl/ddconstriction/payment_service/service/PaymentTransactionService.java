@@ -1,5 +1,6 @@
 package pl.ddconstriction.payment_service.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.ddconstriction.payment_service.entity.PaymentStatusEnum;
@@ -13,8 +14,7 @@ public class PaymentTransactionService {
 
     private final PaymentTransactionRepository repo;
 
-    @Autowired
-    public PaymentTransactionService(final PaymentTransactionRepository repo) {
+    public PaymentTransactionService(PaymentTransactionRepository repo) {
         this.repo = repo;
     }
 
