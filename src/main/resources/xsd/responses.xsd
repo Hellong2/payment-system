@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://example.com/soap/api/responses"
+           xmlns:tns="http://example.com/soap/api/responses"
+           elementFormDefault="qualified">
+<xs:element name="CreatePaymentResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="transactionId" type="xs:long"/>
+            <xs:element name="status" type="tns:status"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="SendPaymentCorrectionResponse">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="status" type="tns:status"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:simpleType name="status">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="PENDING"/>
+        <xs:enumeration value="COMPLETED"/>
+        <xs:enumeration value="EXPIRED"/>
+    </xs:restriction>
+</xs:simpleType>
+</xs:schema>

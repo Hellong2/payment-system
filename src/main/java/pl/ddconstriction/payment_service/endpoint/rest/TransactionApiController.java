@@ -1,4 +1,4 @@
-package pl.ddconstriction.payment_service.controller;
+package pl.ddconstriction.payment_service.endpoint.rest;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://example.com/soap/api/requests" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://example.com/soap/api" targetNamespace="http://example.com/soap/api">
+  <wsdl:types>
+    <xs:schema xmlns:tns="http://example.com/soap/api/requests" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://example.com/soap/api/requests">
+<xs:element name="CreatePaymentRequest">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="amount" type="xs:decimal"/>
+            <xs:element name="currency" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+<xs:element name="SendPaymentCorrectionRequest">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element name="transactionId" type="xs:long"/>
+            <xs:element name="correctionAmount" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="SendPaymentCorrectionRequest">
+    <wsdl:part element="sch:SendPaymentCorrectionRequest" name="SendPaymentCorrectionRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="CreatePaymentRequest">
+    <wsdl:part element="sch:CreatePaymentRequest" name="CreatePaymentRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="PaymentServicePort">
+    <wsdl:operation name="SendPaymentCorrection">
+      <wsdl:input message="tns:SendPaymentCorrectionRequest" name="SendPaymentCorrectionRequest">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePayment">
+      <wsdl:input message="tns:CreatePaymentRequest" name="CreatePaymentRequest">
+    </wsdl:input>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PaymentServicePortSoap11" type="tns:PaymentServicePort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendPaymentCorrection">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SendPaymentCorrectionRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePayment">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="CreatePaymentRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PaymentServicePortService">
+    <wsdl:port binding="tns:PaymentServicePortSoap11" name="PaymentServicePortSoap11">
+      <soap:address location="http://localhost:8080/ws"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
