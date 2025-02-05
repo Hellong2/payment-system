@@ -3,11 +3,20 @@
            targetNamespace="http://example.com/soap/api/responses"
            xmlns:tns="http://example.com/soap/api/responses"
            elementFormDefault="qualified">
+
+<xs:complexType name="ErrorMessage">
+    <xs:sequence>
+        <xs:element name="code" type="xs:string"/>
+        <xs:element name="message" type="xs:string"/>
+    </xs:sequence>
+</xs:complexType>
+
 <xs:element name="CreatePaymentResponse">
     <xs:complexType>
         <xs:sequence>
             <xs:element name="transactionId" type="xs:long"/>
             <xs:element name="status" type="tns:status"/>
+            <xs:element name="error" type="tns:ErrorMessage" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 </xs:element>
@@ -15,6 +24,7 @@
     <xs:complexType>
         <xs:sequence>
             <xs:element name="status" type="tns:status"/>
+            <xs:element name="error" type="tns:ErrorMessage" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 </xs:element>

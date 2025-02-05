@@ -34,8 +34,7 @@ public class TransactionApiController implements TransactionsApi {
 
     @Override
     public ResponseEntity<Void> deleteTransaction(Integer id) {
-        // Convert the Integer id to Long as expected by the service
-        transactionService.deleteById(Long.valueOf(id));
+        transactionService.deleteById(id.longValue());
         return ResponseEntity.noContent().build();
     }
 

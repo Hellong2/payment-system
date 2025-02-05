@@ -30,8 +30,6 @@ public class TransactionStatusMonitorImpl implements TransactionStatusMonitor {
     public void monitorTransactions() {
         Instant thirtySecondsAgo = Instant.now().minusSeconds(30);
 
-
-
         try {
             log.info("Starting Transaction Monitoring Cycle at {}", LocalDateTime.now());
 

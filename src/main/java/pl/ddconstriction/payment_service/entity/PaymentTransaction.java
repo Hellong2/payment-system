@@ -32,6 +32,9 @@ public class PaymentTransaction {
 
     @PrePersist
     protected void onCreate() {
+        if (status == null) {
+            this.setStatus(PaymentStatusEnum.PENDING);
+        }
         this.createdAt = Instant.now();
         this.updatedAt = Instant.now();
     }
