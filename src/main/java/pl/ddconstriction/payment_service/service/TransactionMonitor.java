@@ -1,5 +1,5 @@
 package pl.ddconstriction.payment_service.service;
 
-public interface TransactionStatusMonitor {
+public interface TransactionMonitor {
     void monitorTransactions();
 }
